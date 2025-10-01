@@ -1,0 +1,436 @@
+      
+      <!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ұлылықтың жолында – ұстаз тұрар | Мерекелік шара</title>
+
+  <!-- Google font (қолданғыңыз келмесе алып тастаңыз) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #64b9e1;       /* нәзік фоны */
+      --bg2: #F6FBFF;       /* жеңіл ақшыл көк */
+      --accent: #1a0971;    /* жұмсақ пурпур */
+      --accent-2: #5c46bc;  /* жылы реңк (гүл) */
+      --muted: #6B7280;
+      --card: rgba(255,255,255,0.8);
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, var(--bg2), transparent 20%),
+                  radial-gradient(1000px 500px at 90% 90%, #FFF2F6, transparent 20%),
+                  var(--bg1);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      padding-bottom:60px;
+    }
+
+    /* floating soft shapes */
+    .float-shape{
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(28px);
+      opacity: .45;
+      transform: translate3d(0,0,0);
+      animation: drift 14s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .s1{width:380px;height:380px;left:-80px;top:-80px;background:linear-gradient(180deg,var(--accent),transparent)}
+    .s2{width:260px;height:260px;right:-60px;bottom:-40px;background:linear-gradient(180deg,var(--accent-2),transparent); animation-duration:18s; opacity:.35}
+    .s3{width:180px;height:180px;left:20%;top:60vh;background:linear-gradient(180deg,#CDE8FF,transparent); animation-duration:16s; opacity:.3}
+
+    @keyframes drift{
+      0%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(-18px) translateX(12px) scale(1.02)}
+      100%{transform:translateY(0) translateX(0) scale(1)}
+    }
+
+    /* Container */
+    .container{
+      max-width:980px;
+      margin:48px auto;
+      padding:28px;
+      position:relative;
+      z-index:2;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo .mark{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+      box-shadow: 0 8px 22px rgba(123,97,255,0.16);
+    }
+    .logo .title{
+      font-weight:700;font-size:18px;color:#0F172A;
+      line-height:1;
+    }
+    .subtle{color:var(--muted);font-size:13px}
+
+    /* Hero card */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+      border-radius:18px;
+      padding:28px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
+      align-items:center;
+      backdrop-filter: blur(6px);
+      overflow:hidden;
+    }
+
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size:24px;
+      letter-spacing: -0.2px;
+    }
+    .hero p.lead{margin:0;color:var(--muted);line-height:1.5}
+
+    .info{
+      margin-top:16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      background:linear-gradient(90deg, rgba(123,97,255,0.12), rgba(255,139,167,0.06));
+      padding:10px 12px;border-radius:999px;font-weight:600;font-size:14px;color:var(--accent);
+      display:inline-flex;gap:8px;align-items:center;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.6);
+    }
+
+    /* Card right */
+    .card-right{
+      background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+      border-radius:12px;padding:18px;height:100%;
+      display:flex;flex-direction:column;justify-content:space-between;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    }
+
+    .date{
+      font-size:13px;color:var(--muted);
+      display:flex;flex-direction:column;gap:6px;
+    }
+    .big-date{
+      font-size:20px;font-weight:700;color:#0F172A;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    .cta{
+      margin-top:12px;
+      display:flex;gap:10px;align-items:center;
+    }
+    .btn{
+      padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;box-shadow: 0 10px 24px rgba(123,97,255,0.16);
+    }
+    .btn-outline{
+      background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--muted);
+    }
+
+    /* invitation text card */
+    .invite{
+      margin-top:18px;background:var(--card);padding:18px;border-radius:12px;
+      box-shadow: 0 8px 30px rgba(15,23,42,0.02);
+      font-size:15px;line-height:1.6;color:#0F172A;
+    }
+
+    /* footer */
+    footer{
+      margin-top:24px;text-align:center;color:var(--muted);font-size:13px;
+    }
+
+    /* subtle animation for appearance */
+    .fade-up{opacity:0; transform:translateY(10px); animation:fadeUp .7s forwards}
+    @keyframes fadeUp{to{opacity:1; transform:none}}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .card-right{order:-1}
+    }
+
+    /* Confetti pieces (for celebration) */
+    .confetti{
+      position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:999;
+      overflow:hidden;
+    }
+    .confetti .piece{
+      position:absolute;width:10px;height:14px;opacity:0;
+      transform-origin:center;
+      will-change:transform,opacity;
+      animation:fall 2.4s linear forwards;
+    }
+    @keyframes fall{
+      0%{opacity:1; transform:translateY(-20vh) rotate(0deg)}
+      100%{opacity:1; transform:translateY(110vh) rotate(520deg)}
+    }
+
+    /* subtle bouncing teacher icon */
+    .teacher-blob{
+      width:96px;height:96px;border-radius:14px;background:linear-gradient(180deg,#fff,#fff);
+      display:flex;align-items:center;justify-content:center;box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+      animation:pop 1.2s ease-in-out infinite;
+    }
+    @keyframes pop{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    /* RSVP modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal{width:94%;max-width:520px;background:white;padding:20px;border-radius:12px;box-shadow:0 20px 60px rgba(2,6,23,0.2)}
+    .modal.show{opacity:1;pointer-events:auto}
+    label{display:block;font-size:13px;margin-top:10px;color:var(--muted)}
+    input[type="text"], input[type="email"]{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);margin-top:6px;
+    }
+    .close-x{background:transparent;border:0;font-size:18px;position:absolute;right:14px;top:12px;cursor:pointer;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- soft shapes -->
+  <div class="float-shape s1" aria-hidden="true"></div>
+  <div class="float-shape s2" aria-hidden="true"></div>
+  <div class="float-shape s3" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="fade-up" style="animation-delay:.05s">
+      <div class="logo">
+        <div class="mark" aria-hidden="true">Ұ</div>
+        <div>
+          <div class="title">Ұлылықтың жолында — ұстаз тұрар</div>
+          <div class="subtle">Жаңашаруа қазақ орта мектебі · 02.10.2025</div>
+        </div>
+      </div>
+
+      <div style="text-align:right">
+        <div class="subtle">Қадірлі қонақтарға</div>
+        <button class="btn btn-outline" id="open-rsvp" aria-haspopup="dialog">Қатысамын деп жазылу</button>
+      </div>
+    </header>
+
+    <section class="hero fade-up" style="animation-delay:.12s" role="region" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Құрметті ұстаздар!</h1>
+        <p class="lead">Сіздерді бітіруші түлектер ұйымдастырып отырған ұстаздар күніне арналған мерекелік шарамызға шақырамыз. Бұл күн — Сіздердің еңбектеріңізге алғысымызды жеткізу уақыты.</p>
+
+        <div class="info" aria-hidden="true">
+          <div class="pill">📅 02.10.2025</div>
+          <div class="pill">📍 Жаңашаруа қазақ орта мектебі</div>
+          <div class="pill">🎓 11-сынып оқушылары</div>
+        </div>
+
+        <div class="invite" style="margin-top:18px;">
+          <!-- user-provided text inserted -->
+          <strong>Хат мәтіні:</strong>
+          <p style="margin-top:10px;">
+            Сіздерді бітіруші түлектердің ұйымдастыруымен өткізілейін деп отырған, ұстаздар күніне арналған «Ұлылықтың жолында – ұстаз тұрар» атты мерекелік шарамыздың қадірлі қонағы болуға шақырамыз!<br><br>
+
+            Бұл күні біз Сіздердің еңбектеріңізді ардақтап, шәкірт жүрегіндегі шексіз алғысты жеткізуді мақсат етеміз.<br><br>
+
+            📅 Өтетін күні: <strong>02.10.2025</strong><br>
+            📍 Өтетін орны: <strong>Жаңашаруа қазақ орта мектебі</strong><br><br>
+
+            Сіздердің шараға қатысуларыңыз – біз үшін үлкен мәртебе!<br><br>
+
+            Ізгі тілекпен,<br>
+            <em>11-сынып оқушылары</em>
+          </p>
+        </div>
+      </div>
+
+      <aside class="card-right" aria-label="Шара туралы мәлімет">
+        <div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="teacher-blob" aria-hidden="true">
+              <!-- simple teacher SVG -->
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="4" fill="url(#g)"/>
+                <path d="M8 10c0-1.657 1.567-3 3.5-3S15 8.343 15 10v1" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#FF8BA7"/></linearGradient></defs>
+              </svg>
+            </div>
+            <div>
+              <div style="font-weight:700">Ұстаздар күні мерекесі</div>
+              <div class="subtle">Арнайы шара — шәкірттер атынан</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px" class="date">
+            <div class="subtle">Күні</div>
+            <div class="big-date">02 Қазан, 2025</div>
+            <div class="subtle">Орналасқан жері</div>
+            <div>Жаңашаруа қазақ орта мектебі</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="cta">
+            <button class="btn btn-primary" id="rsvp"></button>
+            <button class="btn btn-outline" id="share"></button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="fade-up" style="animation-delay:.18s">
+      <div>Сіздерді күтеміз — жылы лебізбен, 11-сынып оқушылары</div>
+      <div style="margin-top:8px" class="subtle">Егер қалауларыңыз болса, төмендегі батырма арқылы қатысуыңызды растаңыз.</div>
+    </footer>
+  </div>
+
+  <!-- confetti layer -->
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <!-- RSVP modal -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <button class="close-x" id="close-modal" aria-label="Жабу">✕</button>
+      <h3 style="margin:0 0 6px 0"></h3>
+      <p class="subtle" style="margin:0 0 12px 0"></p>
+
+      <label for="name"></label>
+      <input id="name" type="text" placeholder="Аты-жөніңіз" />
+
+      <label for="email">Телефон </label>
+      <input id="email" type="text" placeholder="+7 7xx xxx xxxx" />
+
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn btn-outline" id="cancel"></button>
+        <button class="btn btn-primary" id="submit-rsvp"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Helpers
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('open-rsvp');
+    const closeBtn = document.getElementById('close-modal');
+    const cancelBtn = document.getElementById('cancel');
+    const rsvpBtn = document.getElementById('rsvp');
+    const submitBtn = document.getElementById('submit-rsvp');
+    const confettiRoot = document.getElementById('confetti');
+    const shareBtn = document.getElementById('share');
+
+    function showModal(){
+      modal.style.opacity = '1';
+      modal.style.pointerEvents = 'auto';
+      modal.setAttribute('aria-hidden','false');
+      modal.classList && modal.classList.add('show');
+    }
+    function hideModal(){
+      modal.style.opacity = '0';
+      modal.style.pointerEvents = 'none';
+      modal.setAttribute('aria-hidden','true');
+      modal.classList && modal.classList.remove('show');
+    }
+
+    openBtn.addEventListener('click', showModal);
+    rsvpBtn.addEventListener('click', showModal);
+    closeBtn.addEventListener('click', hideModal);
+    cancelBtn.addEventListener('click', hideModal);
+
+    // simple confetti generator
+    function launchConfetti(count = 28){
+      // clear old
+      confettiRoot.innerHTML = '';
+      const colors = ['#7B61FF','#FF8BA7','#FFD37A','#A0E9FF','#B4F3C5'];
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'piece';
+        const w = 8 + Math.random()*12;
+        const left = Math.random()*100;
+        el.style.left = left + '%';
+        el.style.width = w + 'px';
+        el.style.height = (w*1.3)+'px';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.borderRadius = (Math.random()>0.5? '2px' : '50%');
+        el.style.transform = 'translateY(-20vh) rotate('+ (Math.random()*360) +'deg)';
+        el.style.animationDuration = (2 + Math.random()*1.2)+'s';
+        el.style.opacity = '0';
+        // random delay so pieces come in waves
+        el.style.animationDelay = (Math.random()*0.15)+'s';
+        confettiRoot.appendChild(el);
+      }
+      // remove after animation
+      setTimeout(()=> confettiRoot.innerHTML = '', 3200);
+    }
+
+    submitBtn.addEventListener('click', ()=> {
+      const name = document.getElementById('name').value.trim();
+      const contact = document.getElementById('email').value.trim();
+      if(!name){
+        alert('Атыңызды енгізіңіз, жаным.');
+        return;
+      }
+      // mimic submit (since we can't send data anywhere)
+      hideModal();
+      launchConfetti(36);
+
+      // short friendly message
+      const message = `Рақмет, ${name}! Қатысуыңыз тіркелді. Біз сізге кейін хабарласамыз: ${contact || 'байланыс көрсетілмеді'}.`;
+      // show a toast-like alert
+      setTimeout(()=> alert(message), 350);
+    });
+
+    // Share (uses Web Share API if available)
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: 'Ұлылықтың жолында – ұстаз тұрар',
+        text: 'Ұстаздар күніне шақырамыз!\n02.10.2025 — Жаңашаруа қазақ орта мектебі',
+        url: location.href
+      };
+      if(navigator.share){
+        try{ await navigator.share(shareData); }
+        catch(e){ console.log('Share cancelled', e); }
+      } else {
+        // fallback: copy text to clipboard
+        const blob = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+        navigator.clipboard && navigator.clipboard.writeText(blob).then(()=> {
+          alert('Шақыру мәтіні буферге көшірілді. Қазір жібере аласыз.');
+        }).catch(()=> {
+          alert('Браузеріңіздің бөлісу мүмкіндігі шектеулі. URL көшіріп алыңыз: ' + location.href);
+        });
+      }
+    });
+
+    // small entrance animations on load
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.fade-up').forEach((el,i)=>{
+        el.style.animationDelay = (0.06 + i*0.04) + 's';
+      });
+    });
+
+    // Accessibility: close modal on ESC
+    document.addEventListener('keydown', (e)=> {
+      if(e.key === 'Escape') hideModal();
