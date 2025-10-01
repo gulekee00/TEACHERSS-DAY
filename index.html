@@ -1,5 +1,4 @@
-      
-      <!doctype html>
+<!doctype html>
 <html lang="kk">
 <head>
   <meta charset="utf-8" />
@@ -11,13 +10,13 @@
 
   <style>
     :root{
-      --bg1: #64b9e1;       /* нәзік фоны */
-      --bg2: #F6FBFF;       /* жеңіл ақшыл көк */
-      --accent: #1a0971;    /* жұмсақ пурпур */
-      --accent-2: #5c46bc;  /* жылы реңк (гүл) */
-      --muted: #6B7280;
-      --card: rgba(255,255,255,0.8);
-      --glass: rgba(255,255,255,0.6);
+      --bg1: #FFF9F7;       /* нәзік фоны */
+      --bg2: #3078b3;       /* жеңіл ақшыл көк */
+      --accent: #4cb2c2;    /* жұмсақ пурпур */
+      --accent-2: #4caad2;  /* жылы реңк (гүл) */
+      --muted: #3e5d99;
+      --card: rgba(45, 109, 123, 0.8);
+      --glass: rgba(52, 170, 225, 0.6);
     }
 
     *{box-sizing:border-box}
@@ -295,8 +294,8 @@
 
         <div style="margin-top:14px">
           <div class="cta">
-            <button class="btn btn-primary" id="rsvp"></button>
-            <button class="btn btn-outline" id="share"></button>
+            <button class="btn btn-primary" id="rsvp">Қатысамын</button>
+            <button class="btn btn-outline" id="share">Жіберу</button>
           </div>
         </div>
       </aside>
@@ -315,18 +314,18 @@
   <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal" role="document">
       <button class="close-x" id="close-modal" aria-label="Жабу">✕</button>
-      <h3 style="margin:0 0 6px 0"></h3>
-      <p class="subtle" style="margin:0 0 12px 0"></p>
+      <h3 style="margin:0 0 6px 0">Қатысуды растау</h3>
+      <p class="subtle" style="margin:0 0 12px 0">Өтінеміз, аты-жөніңіз бен байланыс телефоныңызды қалдырыңыз.</p>
 
-      <label for="name"></label>
+      <label for="name">Аты-жөні</label>
       <input id="name" type="text" placeholder="Аты-жөніңіз" />
 
-      <label for="email">Телефон </label>
+      <label for="email">Телефон (немесе email)</label>
       <input id="email" type="text" placeholder="+7 7xx xxx xxxx" />
 
       <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
-        <button class="btn btn-outline" id="cancel"></button>
-        <button class="btn btn-primary" id="submit-rsvp"></button>
+        <button class="btn btn-outline" id="cancel">Болдырмау</button>
+        <button class="btn btn-primary" id="submit-rsvp">Жіберу</button>
       </div>
     </div>
   </div>
